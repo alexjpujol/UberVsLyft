@@ -3,6 +3,19 @@ $(document).ready(function() {
     $("form").submit(function(evt) {
     evt.preventDefault();
 
+   //  $.ajax({
+   //     type: "POST",
+   //     url: "https://api.lyft.com/oauth/token",
+   //     data: {
+   //        "client_id" : "G_9u7J0dsCUX",
+   //        "client_secret" : "gSfLysjKqQfJWlBfXvVhj2YXnT6B7wIj"
+   //         "grant_type" : "client_credentials",
+   //         "scope" : "public"
+   //     },
+   //     success : function() {console.log(data)},
+   //     dataType: "json"
+   // });
+
     // the AJAX part
     var uberAPI = "https://api.uber.com/v1/estimates/price";
     var parameters = {
