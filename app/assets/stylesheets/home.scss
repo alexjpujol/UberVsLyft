@@ -1,3 +1,39 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+h1, h2 {
+    text-align: center;
+} 
+
+h2 {
+    border-bottom: 2px solid black;
+    padding-bottom: 10px;
+}
+
+container {
+    margin-bottom: 10px;
+}
+
+form {
+    text-align: center;
+    
+    input {
+        margin: 10px;
+    }
+}
+
+#uber, #lyft {
+    text-align: center;
+}
+
+h3 {
+    border-bottom: 2px solid black;
+    padding-bottom: 5px;
+}
+
+footer {
+    margin-top: 10px;
+    padding: 10px;
+    border-top: 2px solid black;
+}
