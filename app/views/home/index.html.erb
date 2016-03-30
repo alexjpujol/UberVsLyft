@@ -1,9 +1,28 @@
 <h1>Lüft</h1>
 <h2>Ride Comparison Engine</h2>
 
-<form>
-    <input type="submit" id="submit">
-</form>
+<div id="form">
+    <form>
+        <input type="text" name="start" placeholder="Start"><br>
+        <input type="text" name="end" placeholder="End"><br>
+        <input type="submit" value="submit">
+    </form>
+</div>
+
+<br><br>
+
+<div id="uber">
+    <% @uber_output.each do |object| %>
+        <strong><%= object["localized_display_name"] %></strong><br>
+        Ride Time: <%= (object["duration"]/60).to_s + " minutes" %><br>
+        Price Estimate: <%= object["estimate"] %><br>
+        Surge Multiplier: <%= object["surge_multiplier"] %><br>
+        <br>
+    <% end %>
+</div>
+
+<br><br>
+
 
 <% @lyftHash.each do |x| %>
 	<strong><u><%= x["ride_type"] %></u></strong><br>
@@ -25,3 +44,4 @@
 <% @lyftHash[2].each do |key, value| %>
 	<%= "#{key}: #{value}" %><br>
 <% end %>
+
