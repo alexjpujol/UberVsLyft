@@ -6,14 +6,13 @@
 </form>
 
 <br><br>
-<%= @uber_output %>
 
-<br><br>
 <div id="uber">
     <% @uber_output.each do |object| %>
         <strong><%= object["localized_display_name"] %></strong><br>
         Ride Time: <%= (object["duration"]/60).to_s + " minutes" %><br>
         Price Estimate: <%= object["estimate"] %><br>
+        Surge Multiplier: <%= object["surge_multiplier"] %><br>
         <br>
     <% end %>
 </div>
