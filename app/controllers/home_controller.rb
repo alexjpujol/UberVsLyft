@@ -6,12 +6,8 @@ class HomeController < ApplicationController
     @uber_request = `curl -H "Authorization: Token "#{UBER_TOKEN}"" \
 "https://api.uber.com/v1/estimates/price?start_latitude=40.7218370&start_longitude=-73.9877070&end_latitude=40.7079100&end_longitude=-74.0064830"`
     @uber_output = (JSON.parse(@uber_request))["prices"]
-       
-        
-        
-        
+
     @test = @uber_output.is_a? Array
-        
 
     @obtainLyftToken = `curl -X POST -H "Content-Type: application/json" \
      --user "#{LYFT_ID}:#{LYFT_SECRET}" \
