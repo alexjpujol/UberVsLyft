@@ -1,4 +1,4 @@
-$(document).ready(function() {
+//$(document).ready(function() {
 
    //  $.ajax({
    //     type: "POST",
@@ -21,24 +21,24 @@ $(document).ready(function() {
 //        'start_longitude': -73.9877070,
 //        'end_latitude': 40.7079100,
 //        'end_longitude': -74.0064830   
-    };
-  
-    function displayData(data) {
-       var rideHTML = '<ul>';
-      $.each(data.prices, function(i,ride) {
-        rideHTML += '<li>';
-        rideHTML += ride.localized_display_name;  
-        rideHTML += '</li>';
-        rideHTML += '<li>';
-        rideHTML += ride.estimate;
-        rideHTML += '</li>';
-        rideHTML += '<li>';
-        rideHTML += ride.duration;
-        rideHTML += '</li>';
-      }); // end each
-      rideHTML += '</ul>';
-      $('#rides').html(rideHTML);
-    }
-    $.getJSON(uberAPI, parameters, displayData);
-  });
-}); // end ready
+//    };
+//  
+//    function displayData(data) {
+//       var rideHTML = '<ul>';
+//      $.each(data.prices, function(i,ride) {
+//        rideHTML += '<li>';
+//        rideHTML += ride.localized_display_name;  
+//        rideHTML += '</li>';
+//        rideHTML += '<li>';
+//        rideHTML += ride.estimate;
+//        rideHTML += '</li>';
+//        rideHTML += '<li>';
+//        rideHTML += ride.duration;
+//        rideHTML += '</li>';
+//      }); // end each
+//      rideHTML += '</ul>';
+//      $('#rides').html(rideHTML);
+//    }
+//    $.getJSON(uberAPI, parameters, displayData);
+//  });
+//}); // end ready
