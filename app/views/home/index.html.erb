@@ -24,6 +24,12 @@
 <br><br>
 
 
+<% @lyftHash.each do |x| %>
+	<strong><u><%= x["ride_type"] %></u></strong><br>
+ 	Ride Time: <%= x["estimated_duration_seconds"] %><br>
+ 	Max Cost: <%= x["estimated_cost_cents_max"] %><br>
+ 	Min Cost: <%= x["estimated_cost_cents_min"] %><br><br>
+ 	<% end %>
 <u><strong>Lyft Line:</strong></u><br>
 <% @lyftHash[0].each do |key, value| %>
 	<%= "#{key}: #{value}" %><br>
