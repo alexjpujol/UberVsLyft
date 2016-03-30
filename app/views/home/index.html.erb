@@ -21,19 +21,12 @@
         </div>
         <div id="lyft" class="col-sm-4 col-sm-offset-2">
             <h3><strong>Lyft</strong></h3>
-            <u><strong>Lyft Line:</strong></u><br>
-            <% @lyftHash[0].each do |key, value| %>
-                <%= "#{key}: #{value}" %><br>
-            <% end %>
-            <br><br>
-            <u><strong>Lyft:</strong></u><br>
-            <% @lyftHash[1].each do |key, value| %>
-                <%= "#{key}: #{value}" %><br>
-            <% end %>
-            <br><br>
-            <u><strong>Lyft Plus:</strong></u><br>
-            <% @lyftHash[2].each do |key, value| %>
-                <%= "#{key}: #{value}" %><br>
+
+            <% @lyftHash.each do |x| %>
+                <strong><u><%= x["ride_type"] %></u></strong><br>
+                Ride Time: <%= (x["estimated_duration_seconds"]/60).to_s + " minutes" %><br>
+                Price Estimate: $<%= ((x["estimated_cost_cents_min"]).round) / 100 %> - $<%= ((x["estimated_cost_cents_max"]).round) / 100 %><br>
+
             <% end %>
         </div>
     </div>

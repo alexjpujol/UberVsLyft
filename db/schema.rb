@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160330160149) do
 
   create_table "locations", force: :cascade do |t|
@@ -18,6 +19,17 @@ ActiveRecord::Schema.define(version: 20160330160149) do
     t.float    "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+=======
+ActiveRecord::Schema.define(version: 20160329211707) do
+
+  create_table "rides", force: :cascade do |t|
+    t.float    "start_latitude"
+    t.float    "start_longitude"
+    t.float    "end_latitude"
+    t.float    "end_longitude"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+>>>>>>> master
   end
 
 end

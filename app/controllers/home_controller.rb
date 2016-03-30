@@ -4,9 +4,11 @@ class HomeController < ApplicationController
         
     
     @uber_request = `curl -H "Authorization: Token "#{UBER_TOKEN}"" \
+
     "https://api.uber.com/v1/estimates/price?start_latitude=40.7218370&start_longitude=-73.9877070&end_latitude=40.7079100&end_longitude=-74.0064830"`
     @uber_output = (JSON.parse(@uber_request))["prices"]
-        
+       
+
     @test = @uber_output.is_a? Array
         
 
@@ -24,7 +26,7 @@ class HomeController < ApplicationController
      @splitLyftRequest = @lyftRequest.split('version: HTTP/1.1', 2)[1]
 
      @lyftData = JSON.parse(@splitLyftRequest)
-     
+
      @lyftHash = @lyftData["cost_estimates"]
      
      @geocodeurl = open('https://api.opencagedata.com/geocode/v1/json?q=173+ludlow+st,+New+York,+NY,+10002&key=a5785bf3c698677630f375eae20eccb4')
@@ -36,6 +38,7 @@ class HomeController < ApplicationController
      @lng = @geocoderesponse["results"][2]["geometry"]["lng"]
 
     
+
     end
     
 end
