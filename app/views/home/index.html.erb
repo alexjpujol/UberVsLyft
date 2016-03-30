@@ -1,48 +1,44 @@
-<h1>Lüft</h1>
-<h2>Ride Comparison Engine</h2>
-
-<div id="form">
-    <form>
-        <input type="text" name="start" placeholder="Start"><br>
-        <input type="text" name="end" placeholder="End"><br>
-        <input type="submit" value="submit">
-    </form>
+<h1>Luber</h1>
+<h2>Want a Ride?</h2>
+<div class="container">
+    <div id="row">
+        <form>
+            <input type="text" name="start" placeholder="Start"><br>
+            <input type="text" name="end" placeholder="End"><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div class="row">
+        <div id="uber" class="col-sm-4 col-sm-offset-1">
+            <h3><strong>Uber</strong></h3>
+            <% @uber_output.each do |object| %>
+                <strong><%= object["localized_display_name"] %></strong><br>
+                Ride Time: <%= (object["duration"]/60).to_s + " minutes" %><br>
+                Price Estimate: <%= object["estimate"] %><br>
+                Surge Multiplier: <%= object["surge_multiplier"] %><br>
+                <br>
+            <% end %>
+        </div>
+        <div id="lyft" class="col-sm-4 col-sm-offset-2">
+            <h3><strong>Lyft</strong></h3>
+            <% @lyftHash.each do |x| %>
+                <strong><u><%= x["ride_type"] %></u></strong><br>
+                Ride Time: <%= (x["estimated_duration_seconds"]/60).to_s + " minutes" %><br>
+                Price Estimate: $<%= ((x["estimated_cost_cents_min"]).round) / 100 %> - $<%= ((x["estimated_cost_cents_max"]).round) / 100 %><br>
+            <u><strong>Lyft Line:</strong></u><br>
+            <% @lyftHash[0].each do |key, value| %>
+                <%= "#{key}: #{value}" %><br>
+            <% end %>
+            <br><br>
+            <u><strong>Lyft:</strong></u><br>
+            <% @lyftHash[1].each do |key, value| %>
+                <%= "#{key}: #{value}" %><br>
+            <% end %>
+            <br><br>
+            <u><strong>Lyft Plus:</strong></u><br>
+            <% @lyftHash[2].each do |key, value| %>
+                <%= "#{key}: #{value}" %><br>
+            <% end %>
+        </div>
+    </div>
 </div>
-
-<br><br>
-
-<div id="uber">
-    <% @uber_output.each do |object| %>
-        <strong><%= object["localized_display_name"] %></strong><br>
-        Ride Time: <%= (object["duration"]/60).to_s + " minutes" %><br>
-        Price Estimate: <%= object["estimate"] %><br>
-        Surge Multiplier: <%= object["surge_multiplier"] %><br>
-        <br>
-    <% end %>
-</div>
-
-<br><br>
-
-
-<% @lyftHash.each do |x| %>
-	<strong><u><%= x["ride_type"] %></u></strong><br>
- 	Ride Time: <%= (x["estimated_duration_seconds"]/60).to_s + " minutes" %><br>
- 	Price Estimate: $<%= ((x["estimated_cost_cents_min"]).round) / 100 %> - $<%= ((x["estimated_cost_cents_max"]).round) / 100 %><br>
-
- <% end %>
-
-<u><strong>Lyft Line:</strong></u><br>
-<% @lyftHash[0].each do |key, value| %>
-	<%= "#{key}: #{value}" %><br>
-<% end %>
-<br><br>
-<u><strong>Lyft:</strong></u><br>
-<% @lyftHash[1].each do |key, value| %>
-	<%= "#{key}: #{value}" %><br>
-<% end %>
-<br><br>
-<u><strong>Lyft Plus:</strong></u><br>
-<% @lyftHash[2].each do |key, value| %>
-	<%= "#{key}: #{value}" %><br>
-<% end %>
-
