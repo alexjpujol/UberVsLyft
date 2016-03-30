@@ -22,7 +22,7 @@ class HomeController < ApplicationController
 	@lyftToken = @lyft_response["access_token"]
 
 	@lyftRequest = `curl --include -X GET -H 'Authorization: Bearer #{@lyftToken}' \
-     "https://api.lyft.com/v1/cost?start_lat=40.7219000&start_lng=-73.9877900&end_lat=40.7079100&end_lng=-74.0064830"`
+     "https://api.lyft.com/v1/cost?start_lat=40.7218370&start_lng=-73.9877070&end_lat=40.7079100&end_lng=-74.0064830"`
 
      @splitLyftRequest = @lyftRequest.split('version: HTTP/1.1', 2)[1]
 
