@@ -13,9 +13,11 @@ class HomeController < ApplicationController
 	@lyftRequest = `curl --include -X GET -H 'Authorization: Bearer #{@lyftToken}' \
      "https://api.lyft.com/v1/cost?start_lat=40.7219000&start_lng=-73.9877900&end_lat=40.7079100&end_lng=-74.0064830"`
 
-     @lyftData = JSON.parse(@lyftRequest)
+     @splitLyft1 = @lyftRequest.split('version: HTTP/1.1', 2).last
+
+     @lyftData = JSON.parse(@splitLyft1)
      
-	 @lyftLinePriceMax = @lyftData["estimated_cost_cents_max"]		
+	 @lyftLinePriceMax = @lyftData["estimated_cost_cents_max"[3]]		
     end
     
 end
