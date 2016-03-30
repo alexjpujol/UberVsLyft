@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-    
+
+	GEOCODE_ID = "a5785bf3c698677630f375eae20eccb4"
     
     UBER_TOKEN = "3Y8tpNXfErvmttM5r5xGQmpGh6V-WSoKR-G85JYH"
     UBER_ID = "wpcm2PlbjXMjtQJfnldnvTGlzLjIzVJ_"
