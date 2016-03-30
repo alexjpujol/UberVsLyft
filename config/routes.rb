@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
     
+  get 'location/index'
+
+  get 'locations/index'
+
     root "home#index"
     
     

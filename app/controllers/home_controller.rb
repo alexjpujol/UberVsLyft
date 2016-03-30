@@ -17,7 +17,17 @@ class HomeController < ApplicationController
 
      @lyftData = JSON.parse(@splitLyft1)
      
-	 @lyftLinePriceMax = @lyftData["estimated_cost_cents_max"[3]]		
+	 @lyftLinePriceMax = @lyftData["estimated_cost_cents_max"[3]]
+
+     @testOne = @lyftData.is_a? Object 
+
+    @geocodeurl = open('https://api.opencagedata.com/geocode/v1/json?q=90+John+st,+New+York,+NY,+10038&key=a5785bf3c698677630f375eae20eccb4')
+    
+    @geocoderesponse = JSON.parse(@geocodeurl.read)
+
+    @test = @geocoderesponse.is_a? Object
+
+    
     end
     
 end
