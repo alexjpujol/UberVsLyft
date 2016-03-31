@@ -6,8 +6,6 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=#{GOOGLE_MAP}&libraries=places"></script>
 </head>
 <body>
 
@@ -17,5 +15,7 @@
         <p class="text-muted">created by Shraddha Patel, Anton Economos, and Alex Pujol</p>
     </div>
 </footer>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzODxENljUqgCljINsi_-jQWfyHbYJH3Q&libraries=places&callback=initAutocomplete"
+        async defer></script>
 </body>
 </html>
