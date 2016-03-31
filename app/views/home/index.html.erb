@@ -3,9 +3,11 @@
 <div class="container">
     <div id="row">
         <form>
-            <input type="text" id="start"placeholder="Enter Start Address" type="text">  
-            <input type="text" id="end" placeholder="Enter Destination" type="text">
-            <input id="submit" type="submit" value="Submit">
+            <input id="autocomplete" placeholder="Enter Start Address"
+             onFocus="geolocate()" type="text">
+            <input id="autocomplete2" placeholder="Enter Destination"
+             onFocus="geolocate()" type="text">
+            <input id="submitbutton" type="submit" value="Submit">
         </form>
     </div>
     <div class="row">
