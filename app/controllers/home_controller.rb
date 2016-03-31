@@ -3,7 +3,7 @@ class HomeController < ApplicationController
     def index
         
     
-    @uber_request = `curl -H "Authorization: Token "#{UBER_TOKEN}"" \
+    @uber_request = `curl -H "Authorization: Token "#{ENV['UBER_TOKEN']}"" \
 "https://api.uber.com/v1/estimates/price?start_latitude=40.707910&start_longitude=-74.006483&end_latitude=40.721837&end_longitude=-73.987707"`
 
     @uber_output = (JSON.parse(@uber_request))["prices"]
@@ -12,7 +12,7 @@ class HomeController < ApplicationController
 
 
     @obtainLyftToken = `curl -X POST -H "Content-Type: application/json" \
-    --user "#{LYFT_ID}:#{LYFT_SECRET}" \
+    --user "#{ENV['LYFT_ID']}:#{ENV['LYFT_SECRET']}" \
     -d '{"grant_type": "client_credentials", "scope": "public"}' \
     "https://api.lyft.com/oauth/token"`
 
@@ -30,7 +30,7 @@ class HomeController < ApplicationController
     
      @lyftHash = @lyftData["cost_estimates"]
      
-     @geocodeurl = open('https://api.opencagedata.com/geocode/v1/json?q=173+ludlow+st,+New+York,+NY,+10002&key=a5785bf3c698677630f375eae20eccb4')
+     @geocodeurl = open("https://api.opencagedata.com/geocode/v1/json?q=173+ludlow+st,+New+York,+NY,+10002&key=#{ENV['GEOCODE_ID']}")
      
      @geocoderesponse = JSON.parse(@geocodeurl.read)
      
