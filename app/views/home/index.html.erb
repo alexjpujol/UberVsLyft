@@ -3,9 +3,14 @@
 <div class="container">
     <div id="row">
         <form>
-            <input type="text" name="start" placeholder="Start"><br>
-            <input type="text" name="end" placeholder="End"><br>
-            <input type="submit" value="Submit">
+            <div id="startAddress">
+      <input id="autocomplete" placeholder="Enter Start Address"
+             onFocus="geolocate()" type="text"></input>
+    </div>
+            <div id="endAddress">
+      <input id="autocomplete2" placeholder="Enter Destination"
+             onFocus="geolocate()" type="text"></input>
+    </div>
         </form>
     </div>
     <div class="row">
