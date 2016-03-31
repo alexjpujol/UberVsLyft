@@ -3,38 +3,59 @@
 <div class="container">
     <div id="row">
         <form>
-        <div id="startAddress">
-      <input id="autocomplete" placeholder="Enter Start Address"
-             onFocus="geolocate()" type="text"></input>
-    </div>
-            <div id="endAddress">
-      <input id="autocomplete2" placeholder="Enter Destination"
-             onFocus="geolocate()" type="text"></input>
-    </div>
+            <input id="autocomplete" placeholder="Enter Start Address"
+             onFocus="geolocate()" type="text">
+            <input id="autocomplete2" placeholder="Enter Destination"
+             onFocus="geolocate()" type="text">
+            <input id="submitbutton" type="submit" value="Submit">
         </form>
     </div>
     <div class="row">
-        <div id="uber" class="col-sm-4 col-sm-offset-1">
-            <h3><strong>Uber</strong></h3>
-            <% @uber_output.each do |object| %>
-                <strong><%= object["localized_display_name"] %></strong><br>
-                Ride Time: <%= (object["duration"]/60).to_s + " minutes" %><br>
-                Price Estimate: <%= object["estimate"] %><br>
-                Surge Multiplier: <%= object["surge_multiplier"] %><br>
-                <br>
-            <% end %>
-        </div>
-        <div id="lyft" class="col-sm-4 col-sm-offset-2">
-            <h3><strong>Lyft</strong></h3>
-
-            <% @lyftHash.each do |x| %>
-                <strong><u><%= x["ride_type"] %></u></strong><br>
-                Ride Time: <%= (x["estimated_duration_seconds"]/60).to_s + " minutes" %><br>
-                Price Estimate: $<%= ((x["estimated_cost_cents_min"]).round) / 100 %> - $<%= ((x["estimated_cost_cents_max"]).round) / 100 %><br>
-                Primetime Percentage: <%= x["primetime_percentage"] %><br><br>
-                <% end %>
-        </div>
+            <div id="uber" class="col-sm-4 col-sm-offset-1">
+                <h3><strong>Uber</strong></h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Ride Type</th>
+                            <th>Ride Time</th>
+                            <th>Price Estimate</th>
+                            <th>Surge Multiplier</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <% @uber_output.each do |object| %>
+                            <td><%= object["localized_display_name"] %></td>
+                            <td><%= (object["duration"]/60).to_s + " minutes" %></td>
+                            <td><%= object["estimate"] %></td>
+                            <td><%= object["surge_multiplier"] %></td>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+            <div id="lyft" class="col-sm-4 col-sm-offset-2">
+                <h3><strong>Lyft</strong></h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Ride Type</th>
+                            <th>Ride Time</th>
+                            <th>Price Estimate</th>
+                            <th>Primetime Percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <% @lyftHash.each do |x| %>
+                            <td><%= x["ride_type"] %></td>
+                            <td><%= (x["estimated_duration_seconds"]/60).to_s + " minutes" %></td>
+                            <td>$<%= ((x["estimated_cost_cents_min"]).round) / 100 %> - <%= ((x["estimated_cost_cents_max"]).round) / 100 %></td>
+                            <td><%= x["primetime_percentage"] %></td>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
     </div>
 </div>
-  </body>
-</html>
