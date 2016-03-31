@@ -4,7 +4,7 @@ class HomeController < ApplicationController
         
     
     @uber_request = `curl -H "Authorization: Token "#{UBER_TOKEN}"" \
-"https://api.uber.com/v1/estimates/price?start_latitude=40.7218370&start_longitude=-73.9877070&end_latitude=40.7079100&end_longitude=-74.0064830"`
+"https://api.uber.com/v1/estimates/price?start_latitude=40.707910&start_longitude=-74.006483&end_latitude=40.721837&end_longitude=-73.987707"`
     @uber_output = (JSON.parse(@uber_request))["prices"]
        
         
@@ -22,7 +22,7 @@ class HomeController < ApplicationController
 	@lyftToken = @lyft_response["access_token"]
 
 	@lyftRequest = `curl --include -X GET -H 'Authorization: Bearer #{@lyftToken}' \
-     "https://api.lyft.com/v1/cost?start_lat=40.7219000&start_lng=-73.9877900&end_lat=40.7079100&end_lng=-74.0064830"`
+     "https://api.lyft.com/v1/cost?start_lat=40.787011&start_lng=-73.975368&end_lat=40.7079100&end_lng=-74.0064830"`
 
      @splitLyftRequest = @lyftRequest.split('version: HTTP/1.1', 2)[1]
 
