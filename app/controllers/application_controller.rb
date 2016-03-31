@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
 
-
-ENV['GEOCODE_ID']
+ ENV['GEOCODE_ID']
  ENV['GOOGLE_MAP']
  ENV['UBER_TOKEN']
  ENV['UBER_ID']
