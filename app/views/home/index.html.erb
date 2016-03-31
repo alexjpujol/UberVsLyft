@@ -21,6 +21,7 @@
         </div>
         <div id="lyft" class="col-sm-4 col-sm-offset-2">
             <h3><strong>Lyft</strong></h3>
+
             <% @lyftHash.each do |x| %>
                 <strong><u><%= x["ride_type"] %></u></strong><br>
                 Ride Time: <%= (x["estimated_duration_seconds"]/60).to_s + " minutes" %><br>
