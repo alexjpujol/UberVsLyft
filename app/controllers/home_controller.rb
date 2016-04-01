@@ -31,7 +31,6 @@ class HomeController < ApplicationController
 
             @test = @uber_output.is_a? Array
 
-
             @obtainLyftToken = `curl -X POST -H "Content-Type: application/json" \
             --user "#{ENV['LYFT_ID']}:#{ENV['LYFT_SECRET']}" \
             -d '{"grant_type": "client_credentials", "scope": "public"}' \

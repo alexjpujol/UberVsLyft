@@ -6,7 +6,26 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP'] %>&v=3.exp&libraries=places"></script>
+    <script type="text/javascript">
+  function initialize() {
+
+  var input = document.getElementById('start');
+  var autocomplete = new google.maps.places.Autocomplete(input);
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+<script type="text/javascript">
+  function initialize() {
+
+  var input2 = document.getElementById('endloc');
+  var autocomplete2 = new google.maps.places.Autocomplete(input2);
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
 </head>
 <body>
 
@@ -16,7 +35,5 @@
         <p class="text-muted">created by Shraddha Patel, Anton Economos, and Alex Pujol</p>
     </div>
 </footer>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP'] %>&libraries=places&callback=initAutocomplete"
-        async defer></script>
 </body>
 </html>
