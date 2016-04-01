@@ -19,7 +19,7 @@
     </div>
     
     <div class="row">
-            <div id="uber" class="col-sm-4 col-sm-offset-1">
+            <div id="uber" class="col-sm-5 col-sm-offset-1">
                 <h3><strong>Uber</strong></h3>
                 <table class="table table-striped">
                     <thead>
@@ -44,7 +44,7 @@
                     </tbody>
                 </table>
             </div>
-            <div id="lyft" class="col-sm-4 col-sm-offset-2">
+            <div id="lyft" class="col-sm-5 col-sm-offset-1">
                 <h3><strong>Lyft</strong></h3>
                 <table class="table table-striped">
                     <thead>
@@ -59,7 +59,7 @@
                         <tr>
                         <% if @start.nil? != true && @endloc.nil? != true %>
                             <% @lyftHash.each do |x| %>
-                                <td><%= x["ride_type"] %></td>
+                            <td><%= x["display_name"] %></td>
                                 <td><%= (x["estimated_duration_seconds"]/60).to_s + " minutes" %></td>
                                 <td>$<%= ((x["estimated_cost_cents_min"]).round) / 100 %> - <%= ((x["estimated_cost_cents_max"]).round) / 100 %></td>
                                 <td><%= x["primetime_percentage"] %></td>
