@@ -2,32 +2,22 @@
 <h2>Want a Ride?</h2>
 <div class="container">
     <div id="row">
-<!--         <form>
+        <!-- <form>
             <input id="autocomplete" placeholder="Enter Start Address"
-             onFocus="geolocate()" type="text">
+             type="text">
             <input id="autocomplete2" placeholder="Enter Destination"
              onFocus="geolocate()" type="text">
             <input id="submitbutton" type="submit" value="Submit">
         </form> -->
-    		<%= form_tag("/", method: "get") do %>
-          <%= label_tag(:startloc, "Starting Address:") %>
-          <%= text_field_tag(:startloc) %>
-          <%= label_tag(:endloc, "Destination:") %>
-          <%= text_field_tag(:endloc) %>
-          <%= submit_tag("Submit") %>
-       	<% end %>
+        <%= form_tag("/", method: "get") do %>
+           <%= label_tag(:start, "Starting Address:") %>
+           <%= text_field_tag(:start) %>
+           <%= label_tag(:endloc, "Destination:") %>
+           <%= text_field_tag(:endloc) %>
+           <%= submit_tag("Submit") %>
+       <% end %>
     </div>
-
- <!--    <%= @lng %>
-    <%= @lat %> -->
-    <%= @startloc %>
-    <%= @endloc %>
-    <br><br>
-
-    <%= @geocoderesponse %>
-
-    <%= @geocodeurl %>
-
+    
     <div class="row">
             <div id="uber" class="col-sm-4 col-sm-offset-1">
                 <h3><strong>Uber</strong></h3>
@@ -42,12 +32,14 @@
                     </thead>
                     <tbody>
                         <tr>
-                        <% @uber_output.each do |object| %>
-                            <td><%= object["localized_display_name"] %></td>
-                            <td><%= (object["duration"]/60).to_s + " minutes" %></td>
-                            <td><%= object["estimate"] %></td>
-                            <td><%= object["surge_multiplier"] %></td>
+                        <% if @start.nil? != true && @endloc.nil? != true %>        
+                            <% @uber_output.each do |object| %>
+                                <td><%= object["localized_display_name"] %></td>
+                                <td><%= (object["duration"]/60).to_s + " minutes" %></td>
+                                <td><%= object["estimate"] %></td>
+                                <td><%= object["surge_multiplier"] %></td>
                         </tr>
+                            <% end %>
                         <% end %>
                     </tbody>
                 </table>
@@ -65,20 +57,17 @@
                     </thead>
                     <tbody>
                         <tr>
-                        <% @lyftHash.each do |x| %>
-                            <td><%= x["ride_type"] %></td>
-                            <td><%= (x["estimated_duration_seconds"]/60).to_s + " minutes" %></td>
-                            <td>$<%= ((x["estimated_cost_cents_min"]).round) / 100 %> - <%= ((x["estimated_cost_cents_max"]).round) / 100 %></td>
-                            <td><%= x["primetime_percentage"] %></td>
+                        <% if @start.nil? != true && @endloc.nil? != true %>
+                            <% @lyftHash.each do |x| %>
+                                <td><%= x["ride_type"] %></td>
+                                <td><%= (x["estimated_duration_seconds"]/60).to_s + " minutes" %></td>
+                                <td>$<%= ((x["estimated_cost_cents_min"]).round) / 100 %> - <%= ((x["estimated_cost_cents_max"]).round) / 100 %></td>
+                                <td><%= x["primetime_percentage"] %></td>
                         </tr>
+                            <% end %>
                         <% end %>
                     </tbody>
                 </table>
             </div>
-    </div>
+        </div>
 </div>
-
-<!-- 
-<%= @lat %>
-<%= @lng %>
- -->

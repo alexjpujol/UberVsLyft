@@ -9,15 +9,13 @@
     rel="stylesheet">
 </head>
 <body>
-    <%= yield %>
-    <footer class="footer">
-        <div class="container">
-            <p class="text-muted">created by Shraddha Patel, Anton Economos,
-            and Alex Pujol</p>
-        </div>
-    </footer>
-    <script async defer src=
-    "https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP'] %>&libraries=places&callback=initAutocomplete">
-    </script>
+<%= yield %>
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">created by Shraddha Patel, Anton Economos, and Alex Pujol</p>
+    </div>
+</footer>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP'] %>&libraries=places&callback=initAutocomplete"
+        async defer></script>
 </body>
 </html>

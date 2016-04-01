@@ -1,14 +1,19 @@
-$(document).ready(function() {
+// $(document).ready(function() {
    
-$("form").submit(function(evt) {
+// $("form").submit(function(evt) {
    
-   evt.preventDefault();
+//    evt.preventDefault();
 
-   var startingAddress = $("#autocomplete").val();
-   var destinationAddress = $("#autocomplete2").val();
+//    var startingAddress = $("#autocomplete").val();
+//    var destinationAddress = $("#autocomplete2").val();
 
+//    console.log(startingAddress)
+//    console.log(destinationAddress)
 
-   }); // end submit
+//    document.getElementById("startingAddressResponse").innerHTML = startingAddress
    
-}); // end ready
+//    }); // end submit
+   
+// }); // end ready
+
 

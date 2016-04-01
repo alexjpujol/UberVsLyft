@@ -2,9 +2,30 @@ class HomeController < ApplicationController
     
     def index
         
-    
+    @start = params[:start]
+    @endloc = params[:endloc]
+
+    if @start.nil? != true && @endloc.nil? != true  
+
+    @geocodeurlstart = open("https://api.opencagedata.com/geocode/v1/json?q=#{@start}&key=#{ENV['GEOCODE_ID']}")
+
+    @geocoderesponsestart = JSON.parse(@geocodeurlstart.read)
+     
+    @geocodeurlend = open("https://api.opencagedata.com/geocode/v1/json?q=#{@endloc}&key=#{ENV['GEOCODE_ID']}")
+
+    @geocoderesponseend = JSON.parse(@geocodeurlend.read)
+
+    @latstart = @geocoderesponsestart["results"][1]["geometry"]["lat"]
+     
+     @lngstart = @geocoderesponsestart["results"][1]["geometry"]["lng"]    
+
+     @latend = @geocoderesponseend["results"][1]["geometry"]["lat"]
+     
+     @lngend = @geocoderesponseend["results"][1]["geometry"]["lng"]
+
+
     @uber_request = `curl -H "Authorization: Token "#{ENV['UBER_TOKEN']}"" \
-"https://api.uber.com/v1/estimates/price?start_latitude=40.707910&start_longitude=-74.006483&end_latitude=40.721837&end_longitude=-73.987707"`
+"https://api.uber.com/v1/estimates/price?start_latitude=#{@latstart}&start_longitude=#{@lngstart}&end_latitude=#{@latend}&end_longitude=#{@lngend}"`
 
     @uber_output = (JSON.parse(@uber_request))["prices"]
 
@@ -21,7 +42,7 @@ class HomeController < ApplicationController
 
 
     @lyftRequest = `curl --include -X GET -H 'Authorization: Bearer #{@lyftToken}' \
-    "https://api.lyft.com/v1/cost?start_lat=40.7218370&start_lng=-73.9877070&end_lat=40.7079100&end_lng=-74.0064830"`
+    "https://api.lyft.com/v1/cost?start_lat=#{@latstart}&start_lng=#{@lngstart}&end_lat=#{@latend}&end_lng=#{@lngend}"`
 
 
     @splitLyftRequest = @lyftRequest.split('version: HTTP/1.1', 2)[1]
@@ -30,20 +51,8 @@ class HomeController < ApplicationController
     
      @lyftHash = @lyftData["cost_estimates"]
 
-     @startloc = params[:startloc] 
-
-     @endloc = params[:endloc]
-
-
-     @geocodeurl = open("https://api.opencagedata.com/geocode/v1/json?q=#{@startloc}&key=#{ENV['GEOCODE_ID']}")
-     
-     @geocoderesponse = JSON.parse(@geocodeurl.read)
-     
-     @lat = @geocoderesponse["results"][1]["geometry"]["lat"]
-     
-     @lng = @geocoderesponse["results"][1]["geometry"]["lng"]
-
-
     end
-    
+
+end
+
 end
