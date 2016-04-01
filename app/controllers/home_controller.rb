@@ -29,18 +29,20 @@ class HomeController < ApplicationController
     @lyftData = JSON.parse(@splitLyftRequest)
     
      @lyftHash = @lyftData["cost_estimates"]
-     
-     p "GEOCODE ID = #{ENV['GEOCODE_ID']}"
 
-     @geocodeurl = open("https://api.opencagedata.com/geocode/v1/json?q=173+ludlow+st,+New+York,+NY,+10002&key=#{ENV['GEOCODE_ID']}")
+     @startloc = params[:startloc] 
+
+     @endloc = params[:endloc]
+
+
+     @geocodeurl = open("https://api.opencagedata.com/geocode/v1/json?q=#{@startloc}&key=#{ENV['GEOCODE_ID']}")
      
      @geocoderesponse = JSON.parse(@geocodeurl.read)
      
-     @lat = @geocoderesponse["results"][2]["geometry"]["lat"]
+     @lat = @geocoderesponse["results"][1]["geometry"]["lat"]
      
-     @lng = @geocoderesponse["results"][2]["geometry"]["lng"]
+     @lng = @geocoderesponse["results"][1]["geometry"]["lng"]
 
-    
 
     end
     

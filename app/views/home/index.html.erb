@@ -2,17 +2,32 @@
 <h2>Want a Ride?</h2>
 <div class="container">
     <div id="row">
-        <form>
-            <div id="startAddress">
-      <input id="autocomplete" placeholder="Enter Start Address"
-             onFocus="geolocate()" type="text"></input>
+<!--         <form>
+            <input id="autocomplete" placeholder="Enter Start Address"
+             onFocus="geolocate()" type="text">
+            <input id="autocomplete2" placeholder="Enter Destination"
+             onFocus="geolocate()" type="text">
+            <input id="submitbutton" type="submit" value="Submit">
+        </form> -->
+    		<%= form_tag("/", method: "get") do %>
+          <%= label_tag(:startloc, "Starting Address:") %>
+          <%= text_field_tag(:startloc) %>
+          <%= label_tag(:endloc, "Destination:") %>
+          <%= text_field_tag(:endloc) %>
+          <%= submit_tag("Submit") %>
+       	<% end %>
     </div>
-            <div id="endAddress">
-      <input id="autocomplete2" placeholder="Enter Destination"
-             onFocus="geolocate()" type="text"></input>
-    </div>
-        </form>
-    </div>
+
+ <!--    <%= @lng %>
+    <%= @lat %> -->
+    <%= @startloc %>
+    <%= @endloc %>
+    <br><br>
+
+    <%= @geocoderesponse %>
+
+    <%= @geocodeurl %>
+
     <div class="row">
             <div id="uber" class="col-sm-4 col-sm-offset-1">
                 <h3><strong>Uber</strong></h3>
@@ -63,42 +78,7 @@
     </div>
 </div>
 
-
-<div id="locationField">
-      <input id="autocomplete" placeholder="Enter your address"
-             onFocus="geolocate()" type="text"></input>
-</div>
-
+<!-- 
 <%= @lat %>
 <%= @lng %>
-
-    <table id="address">
-        <tr>
-            <td class="label">Street address</td>
-            <td class="slimField"><input class="field" disabled="true" id=
-            "street_number"></td>
-            <td class="wideField" colspan="2"><input class="field" disabled=
-            "true" id="route"></td>
-        </tr>
-        <tr>
-            <td class="label">City</td>
-            <td class="wideField" colspan="3"><input class="field" disabled=
-            "true" id="locality"></td>
-        </tr>
-        <tr>
-            <td class="label">State</td>
-            <td class="slimField"><input class="field" disabled="true" id=
-            "administrative_area_level_1"></td>
-            <td class="label">Zip code</td>
-            <td class="wideField"><input class="field" disabled="true" id=
-            "postal_code"></td>
-        </tr>
-        <tr>
-            <td class="label">Country</td>
-            <td class="wideField" colspan="3"><input class="field" disabled=
-            "true" id="country"></td>
-        </tr>
-    </table>
-</body>
-
-</html>
+ -->
