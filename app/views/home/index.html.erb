@@ -2,13 +2,30 @@
 <h2>Want a Ride?</h2>
 <div class="container">
     <div id="row">
-        <form>
+        <!-- <form>
             <input id="autocomplete" placeholder="Enter Start Address"
-             onFocus="geolocate()" type="text">
+             type="text">
             <input id="autocomplete2" placeholder="Enter Destination"
              onFocus="geolocate()" type="text">
             <input id="submitbutton" type="submit" value="Submit">
-        </form>
+        </form> -->
+        <%= form_tag("/", method: "get") do %>
+           <%= label_tag(:start, "Starting Address:") %>
+           <%= text_field_tag(:start) %>
+           <%= label_tag(:endloc, "Destination:") %>
+           <%= text_field_tag(:endloc) %>
+           <%= submit_tag("Submit") %>
+       <% end %>
+
+       <%= @start %>
+       <%= @endloc %>
+        <br>
+       <%= @latstart %>
+        <br>
+        <%= @lngstart %>
+
+        <%= @latend %>
+        <%= @lngend %>
     </div>
     <div class="row">
             <div id="uber" class="col-sm-4 col-sm-offset-1">
