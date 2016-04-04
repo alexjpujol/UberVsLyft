@@ -2,8 +2,29 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+    font-family: 'Hind Siliguri', sans-serif !important;
+}
+
+#nav {
+    background-color: black;
+    color: white;
+    margin-top: -20px;
+    padding-top: 20px;
+}
+
 h1, h2 {
     text-align: center;
+}
+
+.table th {
+    text-align: center;
+    }
+
+#submit_button { 
+  color: #FFFFFF; 
+  background-color: #000000; 
+  border-color: #130269; 
 } 
 
 h2 {
@@ -25,6 +46,10 @@ form {
 
 #uber, #lyft {
     text-align: center;
+}
+
+#start, #endloc {
+    width: 250px;
 }
 
 h3 {
@@ -52,3 +77,38 @@ footer {
     display:none;
     text-align: center;
 }
+
+@media (max-width: 480px) {
+    body {
+        justify: center;
+    }
+    
+    #uber {
+       margin-left: 0px; 
+    }
+
+    #lyft {
+        margin-left: 0px;
+    }
+}
+
+@media (max-width: 330px) {
+    body {
+        justify: center;
+    }
+    
+    #uber {
+       margin-left: 0px; 
+    }
+
+    .table {
+    text-align: center;
+    font-size: 10;
+    }
+
+    #lyft {
+        margin-left: 0px;
+    }
+}
+
+

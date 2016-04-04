@@ -1,5 +1,7 @@
-<h1>FairFare</h1>
-<h2>Want a Ride?</h2>
+<div id="nav">
+    <h1>Fair Fare</h1>
+    <h2>Want a Ride?</h2>
+</div>
 <div class="container">
     <div id="row">
         <%= form_tag("/tables", method: "get", remote: true) do %>
@@ -14,4 +16,5 @@
     <div id="loading">
         <img src="http://blog.teamtreehouse.com/wp-content/uploads/2015/05/InternetSlowdown_Day.gif">
     </div>
+    <br><br>
     <div id="tables"></div>

@@ -4,17 +4,14 @@ class HomeController < ApplicationController
 
     end
     
+
     def show_tables
           
-        @start = params[:start]
-        @endloc = params[:endloc]
-        
-        if @start = "" || @endloc = ""
-
-            flash[:alert] ="Enter a valid route, dude!"
-
-        elsif @start.nil? != true && @endloc.nil? != true     
-
+            @start = params[:start]
+            @endloc = params[:endloc]
+     
+        if @start != "" && @endloc != "" 
+            
             @geocodeurlstart = open("https://api.opencagedata.com/geocode/v1/json?q=#{@start}&key=#{ENV['GEOCODE_ID']}")
 
             @geocoderesponsestart = JSON.parse(@geocodeurlstart.read)
@@ -56,17 +53,15 @@ class HomeController < ApplicationController
 
             @lyftHash = @lyftData["cost_estimates"]
 
-        else
 
-            flash[:alert] ="Enter a valid route, dude!"
-
-        end
+            @lyftHash = @lyftData["cost_estimates"]
 
 
         respond_to do |format|
             format.js
-        end  
-
+        end
+    end
 
     end
 end
+
