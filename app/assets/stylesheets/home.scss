@@ -6,7 +6,7 @@ html {
 }
 
 body {
-    font-family: 'Hind Siliguri', sans-serif !important;
+    font-family: 'Fira Sans', sans-serif !important;
     height: 100%;
 }
 
@@ -16,6 +16,7 @@ body {
     margin-top: -20px;
     padding-top: 20px;
     padding-bottom: 10px;
+
 }
 
 .container {
@@ -23,7 +24,14 @@ body {
     margin-bottom: -63px;
 }
 
-h1, h2 {
+h1 {
+    text-align: center;
+    font-size: 425% !important;
+}
+
+#tables {
+    width: 100%;
+    margin: 0 auto;
     text-align: center;
 }
 
@@ -32,10 +40,10 @@ h1, h2 {
     }
 
 #submit_button { 
-  color: #FFFFFF; 
+  color: white; 
   background-color: #000000; 
-  border-color: #130269;
-  width: 150px;
+  border-color: gray;
+  width: 250px;
 } 
 
 h2 {
@@ -45,6 +53,8 @@ h2 {
 
 container {
     margin-bottom: 10px;
+    text-align: center;
+    position: relative;
 }
 
 form {
@@ -56,8 +66,9 @@ form {
 }
 
 #uber, #lyft {
-    text-align: center;
-    margin: 0 auto;
+    display: inline-block;
+    position: relative;
+    margin: 10px auto;
 }
 
 #start, #endloc {
