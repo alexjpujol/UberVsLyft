@@ -1,9 +1,14 @@
 class HomeController < ApplicationController
     
     def index
-        
+
+    end
+    
+      def show_tables
+          
     @start = params[:start]
     @endloc = params[:endloc]
+    flash[:alert] = "Enter a valid route, dude!"
     
         if @start.nil? != true && @endloc.nil? != true     
         
@@ -49,7 +54,13 @@ class HomeController < ApplicationController
             @lyftData = JSON.parse(@splitLyftRequest)
 
              @lyftHash = @lyftData["cost_estimates"]
+        
         end
+          
+          
+        respond_to do |format|
+            format.js
+        end  
     end
     
 end

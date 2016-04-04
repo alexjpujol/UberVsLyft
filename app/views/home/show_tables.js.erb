@@ -1,0 +1,13 @@
+
+$(document).ajaxStart(function() {
+    $("#loading").css("display", "block")
+});
+
+<% if @lyftHash.nil? !=true || @uber_output.nil? != true %>
+
+    $(document).ajaxComplete(function() {
+        $("#loading").css("display", "none");
+        $("#tables").html("<%= j render('tables') %>");
+    });
+    
+<% end %>
