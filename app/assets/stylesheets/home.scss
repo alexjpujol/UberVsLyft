@@ -11,6 +11,7 @@ body {
     color: white;
     margin-top: -20px;
     padding-top: 20px;
+    padding-bottom: 10px;
 }
 
 h1, h2 {
@@ -24,7 +25,8 @@ h1, h2 {
 #submit_button { 
   color: #FFFFFF; 
   background-color: #000000; 
-  border-color: #130269; 
+  border-color: #130269;
+  width: 150px;
 } 
 
 h2 {
@@ -46,6 +48,7 @@ form {
 
 #uber, #lyft {
     text-align: center;
+    margin: 0 auto;
 }
 
 #start, #endloc {
@@ -99,11 +102,6 @@ footer {
     
     #uber {
        margin-left: 0px; 
-    }
-
-    .table {
-    text-align: center;
-    font-size: 10;
     }
 
     #lyft {
