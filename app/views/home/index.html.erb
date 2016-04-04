@@ -3,68 +3,17 @@
 </div>
 <div class="container">
     <div id="row">
-
-        <%= form_tag("/", method: "get") do %>
-           <%= text_field_tag :start, nil, :placeholder => 'Starting Location' %><br>
-           <%= text_field_tag :endloc, nil, :placeholder => 'Destination' %>
-           <br>
-           <%= submit_tag "Find My Fare", :id => 'submit_button' %>
+        <%= form_tag("/tables", method: "get", remote: true) do %>
+           <%= label_tag(:start, "Starting Address:") %>
+           <%= text_field_tag(:start) %>
+           <%= label_tag(:endloc, "Destination:") %>
+           <%= text_field_tag(:endloc) %>
+           <%= submit_tag("Submit") %>
        <% end %>
+        <div id="error"><%= flash[:alert] if flash[:alert] %> </div>
     </div>
-    <br>
-    <div id="tables" class="row">
-            <div id="uber" class="col-sm-5 col-xs-offset-1">
-                <img src="assets/Uber_Logobit_Digital_white.png">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Ride Type</th>
-                            <th>Ride Time</th>
-                            <th><img src="assets/Uber_Surge_Icon_78px.png"> Surge Multiplier</th>
-                            <th>Total Estimate</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                        <% if @start.nil? != true && @endloc.nil? != true %>    
-                            <% @uber_output.each do |object| %>
-                                <td><%= object["localized_display_name"] %></td>
-                                <td><%= (object["duration"]/60).to_s + " minutes" %></td>
-                                <td><%= object["surge_multiplier"] %>
-                                <td><strong><%= object["estimate"] %></strong></td>
-                                </td>
-                        </tr>
-                            <% end %>
-                        <% end %>
-                    </tbody>
-                </table>
-            </div>
-            <div id="lyft" class="col-sm-5 col-xs-offset-1">
-                <img src="assets/logo_tiny_pink.png">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Ride Type</th>
-                            <th>Ride Time</th>
-                            <th>Primetime % <img src="assets/stache-icon-filled.jpg"></th>
-                            <th>Total Estimate</th>
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                        <% if @start.nil? != true && @endloc.nil? != true %>
-                            <% @lyftHash.each do |x| %>
-                            <td><%= x["display_name"] %></td>
-                                <td><%= (x["estimated_duration_seconds"]/60).to_s + " minutes" %></td>
-                               <td><%= x["primetime_percentage"] %></td>
-                               <td><strong>$<%= ((x["estimated_cost_cents_min"]).round) / 100 %> - <%= ((x["estimated_cost_cents_max"]).round) / 100 %></strong></td>
-                                
-                        </tr>
-                            <% end %>
-                        <% end %>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-</div>
+    <div id="loading">
+        <img src="http://blog.teamtreehouse.com/wp-content/uploads/2015/05/InternetSlowdown_Day.gif">
+    </div>
+    <br><br>
+    <div id="tables"></div>

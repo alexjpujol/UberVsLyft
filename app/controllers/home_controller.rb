@@ -1,11 +1,16 @@
 class HomeController < ApplicationController
     
     def index
-        
-    @start = params[:start]
-    @endloc = params[:endloc]
+
+    end
     
-        if @start.nil? != true || @endloc.nil? != true
+
+    def show_tables
+          
+            @start = params[:start]
+            @endloc = params[:endloc]
+     
+        if @start != "" && @endloc != "" 
             
             @geocodeurlstart = open("https://api.opencagedata.com/geocode/v1/json?q=#{@start}&key=#{ENV['GEOCODE_ID']}")
 
@@ -25,32 +30,38 @@ class HomeController < ApplicationController
 
 
             @uber_request = `curl -H "Authorization: Token "#{ENV['UBER_TOKEN']}"" \
-        "https://api.uber.com/v1/estimates/price?start_latitude=#{@latstart}&start_longitude=#{@lngstart}&end_latitude=#{@latend}&end_longitude=#{@lngend}"`
+            "https://api.uber.com/v1/estimates/price?start_latitude=#{@latstart}&start_longitude=#{@lngstart}&end_latitude=#{@latend}&end_longitude=#{@lngend}"`
 
             @uber_output = (JSON.parse(@uber_request))["prices"]
 
-            @test = @uber_output.is_a? Array
-
             @obtainLyftToken = `curl -X POST -H "Content-Type: application/json" \
-            --user "#{ENV['LYFT_ID']}:#{ENV['LYFT_SECRET']}" \
-            -d '{"grant_type": "client_credentials", "scope": "public"}' \
-            "https://api.lyft.com/oauth/token"`
+                --user "#{ENV['LYFT_ID']}:#{ENV['LYFT_SECRET']}" \
+                -d '{"grant_type": "client_credentials", "scope": "public"}' \
+                "https://api.lyft.com/oauth/token"`
 
             @lyft_response = JSON.parse(@obtainLyftToken)    
             @lyftToken = @lyft_response["access_token"]
 
 
             @lyftRequest = `curl --include -X GET -H 'Authorization: Bearer #{@lyftToken}' \
-            "https://api.lyft.com/v1/cost?start_lat=#{@latstart}&start_lng=#{@lngstart}&end_lat=#{@latend}&end_lng=#{@lngend}"`
+                "https://api.lyft.com/v1/cost?start_lat=#{@latstart}&start_lng=#{@lngstart}&end_lat=#{@latend}&end_lng=#{@lngend}"`
 
 
             @splitLyftRequest = @lyftRequest.split('version: HTTP/1.1', 2)[1]
 
             @lyftData = JSON.parse(@splitLyftRequest)
 
-             @lyftHash = @lyftData["cost_estimates"]
+            @lyftHash = @lyftData["cost_estimates"]
 
+
+            @lyftHash = @lyftData["cost_estimates"]
+
+
+        respond_to do |format|
+            format.js
         end
     end
-    
+
+    end
 end
+

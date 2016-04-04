@@ -71,6 +71,16 @@ footer {
     margin: 0 auto;
 }
 
+#error {
+    text-align: center;
+    color: red;
+}
+
+#loading {
+    display:none;
+    text-align: center;
+}
+
 @media (max-width: 480px) {
     body {
         justify: center;
@@ -98,9 +108,5 @@ footer {
         margin-left: 0px;
     }
 }
-
-
-
-
 
 
