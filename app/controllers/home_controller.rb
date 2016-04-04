@@ -5,8 +5,8 @@ class HomeController < ApplicationController
     @start = params[:start]
     @endloc = params[:endloc]
     
-        if @start.nil? != true && @endloc.nil? != true     
-        
+        if @start.nil? != true || @endloc.nil? != true
+            
             @geocodeurlstart = open("https://api.opencagedata.com/geocode/v1/json?q=#{@start}&key=#{ENV['GEOCODE_ID']}")
 
             @geocoderesponsestart = JSON.parse(@geocodeurlstart.read)
@@ -49,6 +49,7 @@ class HomeController < ApplicationController
             @lyftData = JSON.parse(@splitLyftRequest)
 
              @lyftHash = @lyftData["cost_estimates"]
+
         end
     end
     
