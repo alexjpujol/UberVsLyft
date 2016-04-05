@@ -9,10 +9,10 @@
            <%= text_field_tag :endloc, nil, :placeholder => 'Destination' %><br>
            <%= submit_tag "Find My Fare", :id => 'submit_button' %>
        <% end %>
-        <div id="error"><%= flash[:alert] if flash[:alert] %> </div>
+        <div id="error"></div>
     </div>
     <div id="loading">
-        <img src="http://blog.teamtreehouse.com/wp-content/uploads/2015/05/InternetSlowdown_Day.gif">
+        <%= image_tag "loading.gif" %>
     </div>
     <br>
     <div id="tables"></div>

@@ -10,6 +10,8 @@ class HomeController < ApplicationController
             @start = params[:start]
             @endloc = params[:endloc]
      
+        # check to see if the start and end locations are present, then execute the Geocoding API logic
+        
         if @start != "" && @endloc != "" 
             
             @geocodeurlstart = open("https://api.opencagedata.com/geocode/v1/json?q=#{@start}&key=#{ENV['GEOCODE_ID']}")
@@ -28,11 +30,17 @@ class HomeController < ApplicationController
 
             @lngend = @geocoderesponseend["results"][1]["geometry"]["lng"]
 
+        # once the geocode is complete, plug the longitude and latitudes into the UBER API request
+            
 
             @uber_request = `curl -H "Authorization: Token "#{ENV['UBER_TOKEN']}"" \
             "https://api.uber.com/v1/estimates/price?start_latitude=#{@latstart}&start_longitude=#{@lngstart}&end_latitude=#{@latend}&end_longitude=#{@lngend}"`
 
             @uber_output = (JSON.parse(@uber_request))["prices"]
+            
+            
+        # then do the same for Lyft
+            
 
             @obtainLyftToken = `curl -X POST -H "Content-Type: application/json" \
                 --user "#{ENV['LYFT_ID']}:#{ENV['LYFT_SECRET']}" \
@@ -41,7 +49,7 @@ class HomeController < ApplicationController
 
             @lyft_response = JSON.parse(@obtainLyftToken)    
             @lyftToken = @lyft_response["access_token"]
-
+            
 
             @lyftRequest = `curl --include -X GET -H 'Authorization: Bearer #{@lyftToken}' \
                 "https://api.lyft.com/v1/cost?start_lat=#{@latstart}&start_lng=#{@lngstart}&end_lat=#{@latend}&end_lng=#{@lngend}"`
