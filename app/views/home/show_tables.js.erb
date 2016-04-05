@@ -1,22 +1,13 @@
 $(document).ready(function() {
     
     $("form").on("submit", function(event) {
-        if ($("#start").val() === "" || $("#endloc").val() === ""){
-            document.getElementById("error").textContent = "Please enter a valid search! You can't have empty values and you can't do mega rides!"
-            return false;
-        } else {
+        if ($("#start").val() === "" || $("#endloc").val() === ""){ return false } 
+        else {
         $("#tables").css("display", "none");
-        document.getElementById("error").textContent = "";
-        $(document).ajaxStart(function() {
-        $("#loading").css("display", "block");
-    });  
-        };
-    });
-    
+        }});
     
     $(document).ajaxStart(function() {
         $("#tables").css("display", "none");
-        $("#loading").css("display", "block");
     });
 
 
