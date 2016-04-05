@@ -12,7 +12,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                        <% if @start.nil? != true && @endloc.nil? != true %>    
+                            <% if @start.nil? != true && @endloc.nil? != true && @uber_output.nil? != true %>    
                             <% @uber_output.each do |object| %>
                                 <td><%= object["localized_display_name"] %></td>
                                 <td><%= (object["duration"]/60).to_s + " mins" %></td>
