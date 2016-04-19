@@ -1,36 +1,19 @@
 <div id="nav">
-  <h1>Meet Me Halfway?</h1>
+    <h1>Fair<span style="color:#FC21BD">Fare</span></h1>
 </div>
-
 <div class="container">
-  <div id="row">
-    <form>
-      <input type="text" id="start" placeholder="Where are they?">
-      <br><br>
-      <input type="text" id="endloc" placeholder="Where are they?">
-      <button type="button" id="submit_button">Where can we eat?</button>
-    </form>
-    <div id="error"></div>
-  </div>
-
-    <div id="travelmode">
-      <p>Mode of Travel: </p>
-      <select id="mode">
-        <option value="DRIVING">Driving</option>
-        <option value="WALKING">Walking</option>
-        <option value="BICYCLING">Bicycling</option>
-        <option value="TRANSIT">Subway or Bus</option>
-      </select>
+    <div id="row">
+      <br>
+        <%= form_tag("/tables", method: "get", remote: true) do %>
+           <%= text_field_tag :start, nil, :placeholder => 'Starting Location' %><br>
+           <%= text_field_tag :endloc, nil, :placeholder => 'Destination' %><br>
+           <%= submit_tag "Find My Fare", :id => 'submit_button' %>
+       <% end %>
+        <div id="error"></div>
     </div>
-  
+    <div id="loading">
+        <%= image_tag "loading.gif" %>
+    </div>
     <br>
-
-    <div id="map">
-    </div>
-
-    <div id="yelp">
-    </div>
-</div>
-
-
-</div>
+    <div id="tables"></div>
+    

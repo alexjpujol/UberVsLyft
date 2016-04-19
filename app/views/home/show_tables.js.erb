@@ -1,21 +1,20 @@
 $(document).ready(function() {
-
+    
     $("form").on("submit", function(event) {
-        if ($("#start").val() === "" || $("#endloc").val() === "") {
-            return false
-        } else {
-            $("#tables").css("display", "none");
-        }
-    });
-
+        if ($("#start").val() === "" || $("#endloc").val() === ""){ return false } 
+        else {
+        $("#tables").css("display", "none");
+        }});
+    
     $(document).ajaxStart(function() {
         $("#tables").css("display", "none");
     });
 
+
     $(document).ajaxComplete(function() {
-        $("#loading").css("display", "none");
-        $("#tables").css("display", "block");
-        $("#tables").html("<%= j render('tables') %>");
-    });
+            $("#loading").css("display", "none");
+            $("#tables").css("display", "block");
+            $("#tables").html("<%= j render('tables') %>");
+        });
 
 });
