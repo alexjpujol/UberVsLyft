@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
     root "home#index"
 
-    get "/tables" => "home#show_tables"
+    get "/yelp" => "home#yelp_results"
     
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

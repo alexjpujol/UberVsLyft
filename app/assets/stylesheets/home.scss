@@ -2,143 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 html {
-    height: 100%;
+	height: 100%;
 }
 
-body {
-    font-family: 'Fira Sans', sans-serif !important;
-    height: 100%;
+#map {
+	width: 500px;
+	height: 400px;
+	background-color: #ccc;
 }
 
-#nav {
-    background-color: black;
-    color: white;
-    margin-top: -20px;
-    padding-top: 20px;
-    padding-bottom: 10px;
 
-}
-
-.container {
-    min-height: 100%;
-    margin-bottom: -63px;
-}
-
-h1 {
-    text-align: center;
-    font-size: 425% !important;
-}
-
-#tables {
-    width: 100%;
-    margin-left: 4%;
-    text-align: center;
-}
-
-.table th {
-    text-align: center;
-    }
-
-#submit_button { 
-  color: white; 
-  background-color: #000000; 
-  border-color: gray;
-  width: 250px;
-} 
-
-h2 {
-    border-bottom: 2px solid black;
-    padding-bottom: 10px;
-}
-
-container {
-    margin-bottom: 10px;
-    text-align: center;
-    position: relative;
-}
-
-form {
-    text-align: center;
-    
-    input {
-        margin: 10px;
-    }
-}
-
-#uber, #lyft {
-    display: inline-block;
-    position: relative;
-    margin: 10px auto;
-}
-
-#start, #endloc {
-    width: 250px;
-}
-
-h3 {
-    border-bottom: 2px solid black;
-    padding-bottom: 5px;
-}
-
-footer {
-    margin-top: 10px;
-    padding: 10px;
-    border-top: 2px solid black;
-    position: relative;
-    bottom: 0;
-    height: 60px;
-
-}
-
-#address {
-    color: blue;
-    margin: 0 auto;
-}
-
-#error {
-    text-align: center;
-    color: red;
-}
-
-#loading {
-    display:none;
-    text-align: center;
-}
-
-@media (max-width: 480px) {
-    body {
-        justify: center;
-    }
-    
-    #tables {
-        margin-left: 2%;
-    }
-    
-    #uber {
-       margin-left: 0px; 
-    }
-
-    #lyft {
-        margin-left: 0px;
-    }
-}
-
-@media (max-width: 330px) {
-    body {
-        justify: center;
-    }
-    
-    tables {
-        margin-left: -1%;
-    }
-    
-    #uber {
-       margin-left: 0px; 
-    }
-
-    #lyft {
-        margin-left: 0px;
-    }
-}
 
 
